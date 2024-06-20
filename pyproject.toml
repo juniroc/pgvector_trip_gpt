@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pgvector-trip-gpt"
+version = "0.1.0"
+description = ""
+authors = ["juniroc <lmj35021@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pre-commit = "^3.7.1"
+black = "^24.4.2"
+ruff = "^0.4.9"
+sentence-transformers = "^3.0.1"
+pandas = "^2.2.2"
+numpy = "^2.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
