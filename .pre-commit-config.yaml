@@ -1,0 +1,41 @@
+repos:
+  - repo: local
+    hooks:
+      - id: black
+        name: black
+        entry: poetry run black
+        language: system
+        types: [python]
+        require_serial: true
+        exclude: ^(research|archive)/
+      - id: ruff
+        name: ruff
+        entry: poetry run ruff
+        language: system
+        types: [python]
+        require_serial: true
+        args: [--fix, --exit-non-zero-on-fix]
+        exclude: ^(?!research/vector-retrieval)(research|archive|src/demo_front)/
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-ast
+        exclude: ^(?!research/vector-retrieval)(research|archive|src/demo_front)/
+      - id: check-case-conflict
+      - id: check-docstring-first
+        exclude: ^(?!research/vector-retrieval)(research|archive|src/demo_front)/
+      - id: check-executables-have-shebangs
+        exclude: ^(?!research/vector-retrieval)(research|archive|src/demo_front)/
+      - id: check-merge-conflict
+      - id: check-toml
+      - id: debug-statements
+        exclude: ^(?!research/vector-retrieval)(research|archive|src/demo_front)/
+      - id: detect-private-key
+      - id: end-of-file-fixer
+        exclude: \.noeof\. # Some tests require no EOF
+      - id: fix-encoding-pragma
+        args: ["--remove"]
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: trailing-whitespace
